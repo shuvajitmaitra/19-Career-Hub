@@ -1,8 +1,10 @@
 import PropTypes from "prop-types";
 import { CiLocationOn, CiDollar } from "react-icons/ci";
+import { Link } from "react-router-dom";
 
 const Job = ({ job }) => {
   const {
+    id,
     logo,
     job_title,
     company_name,
@@ -34,9 +36,11 @@ const Job = ({ job }) => {
           Salary: {salary}
         </h2>
       </div>
-      <button className="btn rounded-md mt-6 capitalize text-white font-semibold bg-gradient-to-r from-[#7E90FE] to-[#9873FF]">
-        View Details
-      </button>
+      <Link to={`/jobs/${id}`}>
+        <button className="btn rounded-md mt-6 capitalize text-white font-semibold bg-gradient-to-r from-[#7E90FE] to-[#9873FF]">
+          View Details
+        </button>
+      </Link>
     </div>
   );
 };
