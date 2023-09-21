@@ -1,6 +1,7 @@
 import { useLoaderData, useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { saveJobApplication } from "../../Utilies/LocalStorage";
 
 const JobDetails = () => {
   const jobs = useLoaderData(); //এখান থেকে আমারা টোটাল ডাটাটাকে fetch করার জন্য object আকারে পাবো
@@ -8,6 +9,7 @@ const JobDetails = () => {
   const job = jobs.find((job) => job.id == id);
 
   const handleApplyButton = () => {
+    saveJobApplication(id);
     toast.success("Successfully Applied !", {
       position: "top-center",
       autoClose: 5000,
