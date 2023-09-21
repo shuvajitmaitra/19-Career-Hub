@@ -1,4 +1,5 @@
 import UserImage from "../../assets/images/user.png";
+
 const Banner = () => {
   return (
     <div className="flex items-center justify-center mt-20">
