@@ -1,11 +1,24 @@
 import { useLoaderData, useParams } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const JobDetails = () => {
   const jobs = useLoaderData(); //এখান থেকে আমারা টোটাল ডাটাটাকে fetch করার জন্য object আকারে পাবো
   const { id } = useParams(); //এখানে useParams এর জন্য রাউটের থেকে id টা পাবো
   const job = jobs.find((job) => job.id == id);
 
-  console.log(job);
+  const handleApplyButton = () => {
+    toast.success("Successfully Applied !", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
   return (
     <div className="grid gap-6 grid-cols-4 my-20">
       <div className="col-span-3  p-4 space-y-4">
@@ -48,10 +61,14 @@ const JobDetails = () => {
             {job.contact_information.address}
           </p>
         </div>
-        <button className="btn w-full rounded-md mt-6 capitalize text-white font-semibold bg-gradient-to-r from-[#7E90FE] to-[#9873FF]">
+        <button
+          onClick={handleApplyButton}
+          className="btn w-full rounded-md mt-6 capitalize text-white font-semibold bg-gradient-to-r from-[#7E90FE] to-[#9873FF]"
+        >
           Apply Now
         </button>{" "}
       </div>
+      <ToastContainer />
     </div>
   );
 };
