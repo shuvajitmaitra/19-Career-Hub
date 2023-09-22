@@ -6,10 +6,11 @@ import { saveJobApplication } from "../../Utilies/LocalStorage";
 const JobDetails = () => {
   const jobs = useLoaderData(); //এখান থেকে আমারা টোটাল ডাটাটাকে fetch করার জন্য object আকারে পাবো
   const { id } = useParams(); //এখানে useParams এর জন্য রাউটের থেকে id টা পাবো
-  const job = jobs.find((job) => job.id == id);
+  const idInt = parseInt(id);
+  const job = jobs.find((job) => job.id == idInt);
 
   const handleApplyButton = () => {
-    saveJobApplication(id);
+    saveJobApplication(idInt);
     toast.success("Successfully Applied !", {
       position: "top-center",
       autoClose: 5000,

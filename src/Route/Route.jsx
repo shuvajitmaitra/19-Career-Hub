@@ -2,9 +2,10 @@ import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../Layout/MainLayout";
 import Home from "../Pages/Home/Home";
 import Statistics from "../Pages/Statistics/Statistics";
-import Jobs from "../Pages/Jobs/Jobs";
+
 import Blog from "../Pages/Blog/Blog";
 import JobDetails from "../Pages/JobDetails/JobDetails";
+import AppliedJob from "../Pages/AppliedJob/AppliedJob";
 
 const Route = createBrowserRouter([
   {
@@ -19,14 +20,19 @@ const Route = createBrowserRouter([
         path: "/statistics",
         element: <Statistics></Statistics>,
       },
-      {
-        path: "/jobs",
-        element: <Jobs></Jobs>,
-      },
+      // {
+      //   path: "/jobs",
+      //   element: <Jobs></Jobs>,
+      // },
       {
         path: "/jobs/:id",
         loader: () => fetch(`../../public/jobs.json`),
         element: <JobDetails></JobDetails>,
+      },
+      {
+        path: "/appliedjob",
+        loader: () => fetch(`../../public/jobs.json`),
+        element: <AppliedJob></AppliedJob>,
       },
       {
         path: "/blog",
